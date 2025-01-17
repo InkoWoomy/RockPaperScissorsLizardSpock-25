@@ -1,0 +1,25 @@
+body {
+    background-color: #FFF0E0;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+.btn-color
+{
+    background-color: #BAA789;
+}
+
+.btn-color:hover{
+    background-color: #baa78993;
+}
+
+.icons {
+    width: 100%;
+    height: auto;
+}
