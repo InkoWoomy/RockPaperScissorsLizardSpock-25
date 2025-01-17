@@ -94,6 +94,7 @@ buttonBest1.addEventListener('click', function()
 {
     roundsTotal = 1;
     roundsCurrent = 0;
+    playerTurn = 0;
     GameRefresh();
 });
 
@@ -101,6 +102,7 @@ buttonBest3.addEventListener('click', function()
 {
     roundsTotal = 3;
     roundsCurrent = 0;
+    playerTurn = 0;
     GameRefresh();
 });
 
@@ -108,6 +110,7 @@ buttonBest5.addEventListener('click', function()
 {
     roundsTotal = 5;
     roundsCurrent = 0;
+    playerTurn = 0;
     GameRefresh();
 });
 
@@ -115,6 +118,7 @@ buttonBest7.addEventListener('click', function()
 {
     roundsTotal = 7;
     roundsCurrent = 0;
+    playerTurn = 0;
     GameRefresh();
 });
 
@@ -137,16 +141,17 @@ async function GameRefresh()
         } else {
             finalText.innerText = "After " + roundsTotal + " rounds, the winner is: "
         }
-        
+
         if (player1Points > player2Points)
         {
             finalText.innerText += " Player 1!";
         } else if (player2Points > player1Points){
-            if (computerPlayer = false)
+            if (computerPlayer == true)
             {
                 finalText.innerText += " CPU Player!";
+            } else {
+                finalText.innerText += " Player 2!";
             }
-            finalText.innerText += " Player 2!";
         } else {
             finalText.innerText += "An error handling message? How did they win?!"
         }
@@ -166,15 +171,15 @@ async function GameRefresh()
         }
 
         console.log(computerPlayer);
-        if (computerPlayer = true)
-        { 
-            player2Option = await CpuChoice();
-            console.log ("CPU option", player2Option);
-            detailsText.innerText = "Select your play!";
-        } else {
-            playerTurn++; 
-            detailsText.innerText = "Player " + playerTurn + ", select your play!";
-        }
+        playerTurn++;
+        if (computerPlayer == true)
+            { 
+                player2Option = await CpuChoice();
+                detailsText.innerText = "Select your play!";
+            } else {
+                detailsText.innerText = "Player " + playerTurn + ", select your play!";
+            }
+        console.log("playerTurn", playerTurn);
     }
 }
 
@@ -193,41 +198,86 @@ async function CpuChoice()
 buttonRock.addEventListener('click', function()
 {
     console.log("Player picks rock.");
-    player1Option = "rock";
+    if (playerTurn == 1)
+        {
+            player1Option = "rock";
+        } else {
+            player2Option = "rock";
+        }
     if (playerTurn >= 2 || computerPlayer == true)
-    {
-        DetermineWinner();
-    } else {
-        GameRefresh();
-    }
+        {
+            DetermineWinner();
+        } else {
+            GameRefresh();
+        }
 });
 
 buttonPaper.addEventListener('click', function()
 {
     console.log("Player picks paper.");
-    player1Option = "paper";
-    DetermineWinner();
+    if (playerTurn == 1)
+        {
+            player1Option = "paper";
+        } else {
+            player2Option = "paper";
+        }
+    if (playerTurn >= 2 || computerPlayer == true)
+        {
+            DetermineWinner();
+        } else {
+            GameRefresh();
+        }
 });
 
 buttonScissors.addEventListener('click', function()
 {
     console.log("Player picks scissors.");
-    player1Option = "scissors";
-    DetermineWinner();
+    if (playerTurn == 1)
+        {
+            player1Option = "scissors";
+        } else {
+            player2Option = "scissors";
+        }
+    if (playerTurn >= 2 || computerPlayer == true)
+        {
+            DetermineWinner();
+        } else {
+            GameRefresh();
+        }
 });
 
 buttonLizard.addEventListener('click', function()
 {
     console.log("Player picks lizard.");
-    player1Option = "lizard";
-    DetermineWinner();
+    if (playerTurn == 1)
+        {
+            player1Option = "lizard";
+        } else {
+            player2Option = "lizard";
+        }
+    if (playerTurn >= 2 || computerPlayer == true)
+        {
+            DetermineWinner();
+        } else {
+            GameRefresh();
+        }
 });
 
 buttonSpock.addEventListener('click', function()
 {
     console.log("Player picks spock.");
-    player1Option = "spock";
-    DetermineWinner();
+    if (playerTurn == 1)
+        {
+            player1Option = "spock";
+        } else {
+            player2Option = "spock";
+        }
+    if (playerTurn >= 2 || computerPlayer == true)
+        {
+            DetermineWinner();
+        } else {
+            GameRefresh();
+        }
 });
 
 async function DetermineWinner()
