@@ -191,7 +191,6 @@ async function CpuChoice()
 {
     const response = await fetch(`https://rockpaperscissorslizardspock-akezg8fkdyewb4g7.canadacentral-01.azurewebsites.net/rpsls/cpurandom/`);
     const data = await response.text();
-    console.log(data);
     return data;
 }
 
